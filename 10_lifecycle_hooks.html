@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>Le bouton a été cliqué <strong>{{ count }} fois</strong></p>
+    <button @click="incrementCount">Click</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 15
+      },
+      methods: {
+        incrementCount: function () {
+          this.count++
+        }
+      },
+      watch: {
+        count: function (newValue) {
+          console.log(`La valeur de "count" est : ${newValue}`);
+        }
+      },
+      created: function () {
+        console.log(`La valeur de "count" est : ${this.count}`);
+      }
+    })
+  </script>
+</body>
+</html>

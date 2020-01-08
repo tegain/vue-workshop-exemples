@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <img :src="product.img" width="200">
+    <h4>{{ product.name }}</h4>
+    <p>{{ product.price | price }}</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    Vue.filter('price', function (value) {
+      if (!value) return '';
+      return `${value.toString()} €`;
+    })
+
+    var app = new Vue({
+    el: '#app',
+    data: {
+      product: {
+        name: 'The Witcher Vol. 1',
+        img: 'https://images-eu.ssl-images-amazon.com/images/I/618HmyzXHfL._SY346_.jpg',
+        price: 15
+      }
+    }
+  })
+  </script>
+</body>
+</html>

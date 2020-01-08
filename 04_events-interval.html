@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>Le bouton a été cliqué <strong>{{ count }} fois</strong></p>
+    <button v-on:click="incrementCount">Click</button>
+    <button v-on:click="startCounting">Start counting</button>
+    <button v-on:click="stopCounting">Stop counting</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  
+  <script>
+    var app = new Vue({
+    el: '#app',
+    data: {
+      count: 0
+    },
+    methods: {
+      incrementCount: function () {
+        this.count++
+      },
+      startCounting: function () {
+        this.interval = setInterval(() => {
+          this.count++
+        }, 1000)
+      },
+      stopCounting: function () {
+        clearInterval(this.interval);
+      }
+    }
+  })
+  </script>
+</body>
+</html>
